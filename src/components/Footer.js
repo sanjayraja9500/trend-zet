@@ -54,28 +54,28 @@ const Footer = () => {
               <span className='py-1'>
                 <BsPersonFill />
               </span>{' '}
-              my account
+              My Account
             </p>
 
             <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
               <span className='py-1'>
                 <BsPaypal />
               </span>{' '}
-              checkout
+              Checkout
             </p>
 
             <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
               <span className='py-1'>
                 <FaHome />
               </span>{' '}
-              order Tracking
+              Order Tracking
             </p>
 
             <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
               <span className='py-1'>
                 <MdLocationOn />
               </span>{' '}
-              Help & support
+              Help & Support
             </p>
           </div>
         </div>

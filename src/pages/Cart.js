@@ -27,7 +27,7 @@ const Cart = () => {
     if (userInfo) {
       setPayNow(true);
     } else {
-      toast.error('Please sign in to Checkout');
+      toast.error('Please Sign in to Checkout');
     }
     setTimeout(() => {
       navigate('/login');
