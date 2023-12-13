@@ -15,7 +15,7 @@ import Product from './components/product';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Banner from './components/Banner';
-
+import { ToastContainer, toast } from 'react-toastify';
 import { auth } from './firebase.config';
 import Profile from './pages/Profile';
 const Layout = () => {
@@ -28,8 +28,20 @@ const Layout = () => {
     </div>
   );
 };
+
 const App = () => {
   const [user, setUser] = useState(null);
+  <ToastContainer
+    position='top-left'
+    autoClose={2000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    Draggable
+    pauseOnHovertheme='dark'
+  />;
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {

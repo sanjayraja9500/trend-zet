@@ -3,8 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase.config';
-import { toast } from 'react-toastify';
 
+import { ToastContainer, toast } from 'react-toastify';
 import { IoHome } from 'react-icons/io5';
 import { FaCircleArrowLeft } from 'react-icons/fa6';
 
@@ -52,7 +52,6 @@ const Profile = () => {
             image: imageURL,
           });
           fetchProfileData();
-
           toast.success('Profile Update Successfully !');
         } catch (error) {
           console.log(error);
@@ -61,7 +60,7 @@ const Profile = () => {
     } else toast.warning('Input Field Is Mandatory !');
     setTimeout(() => {
       navigate('/');
-    }, 2000);
+    }, 1000);
   };
 
   // const clearFormInput = () => {
@@ -204,6 +203,17 @@ const Profile = () => {
           </Link>
         </div>
       </div>
+      <ToastContainer
+        position='top-left'
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        Draggable
+        pauseOnHovertheme='dark'
+      />
     </section>
   );
 };

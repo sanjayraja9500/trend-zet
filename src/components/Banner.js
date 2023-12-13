@@ -22,11 +22,11 @@ const Banner = () => {
   };
 
   return (
-    <div className='w-full h-auto overflow-x-hidden'>
-      <div className='w-screen h-[750px] relative'>
+    <div className='w-full h-auto md:w-full  overflow-x-hidden'>
+      <div className='w-screen h-[750px] relative p-8'>
         <div
           style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
-          className='w-[400vw] h-full flex transition-transform duration-1000'
+          className='w-[100vw] h-full flex transition-transform duration-1000'
         >
           <img
             className='w-screen h-full object-cover'
@@ -47,24 +47,24 @@ const Banner = () => {
             Loading='priority'
           />
           <img
-            className='w-screen h-full object-cover'
+            className='w-[400vw] h-full object-cover'
             src={data[3]}
             alt='imgFour'
             Loading='priority'
           />
         </div>
-        <div className='absolute w-fit left-0 right-0 mx-auto -mb-20 flex gap-8 bottom-48 px-4'>
+        <div className='absolute w-fit left-0 right-0 mx-auto -mb-24 flex gap-8 bottom-48 px-4   '>
           <div
             onClick={prevSlide}
-            className='w-14 h-12 border-[1px] border-gray-700 flex items-center justify-center hover:cursor-pointer hover:bg-white hover:text-black  duration-300 '
+            className='w-14 h-12 border-2 border-gray-700 flex items-center justify-center hover:cursor-pointer bg-black text-white hover:bg-white hover:text-black  duration-300    '
           >
-            <HiArrowLeft />
+            <HiArrowLeft className='font-extrabold text-3xl' />
           </div>
           <div
             onClick={nextSlide}
-            className='w-14 h-12 border-[1px] border-gray-700 flex items-center justify-center hover:cursor-pointer hover:bg-gray-700 hover:text-white active:bg-gray-900 duration-300'
+            className='w-14 h-12 border-2 border-gray-700 flex items-center justify-center hover:cursor-pointer text-black bg-white hover:bg-black hover:text-white active:bg-gray-900 duration-300'
           >
-            <HiArrowRight />
+            <HiArrowRight className='font-extrabold  text-3xl' />
           </div>
         </div>
       </div>

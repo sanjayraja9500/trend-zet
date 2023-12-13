@@ -103,7 +103,7 @@ const Registration = () => {
   };
 
   return (
-    <div className='contact  mb-4 mt-24' id='contact'>
+    <div className='contact  mb-14 mt-14 ' id='contact'>
       <div className='title-container bg-gradient-to-r from-blue-400 to-transparent items-center justify-center'>
         <div className='flex  justify-center items-center '>
           <h3
@@ -111,16 +111,16 @@ const Registration = () => {
               color: '#000',
               padding: '10px 50px',
             }}
-            className='rounded-md mt-3'
+            className='rounded-md mt-3 text-xl font-bold underline  '
           >
             Sign Up
           </h3>
         </div>
 
-        <div className='row h-100 justify-content-center align-items-center'>
-          <div className='col-10 col-md-8 col-g-6'>
+        <div className='flex w-[100%] h-100 justify-center align-items-center'>
+          <div className='mb-4'>
             <form
-              className='contact-form flex flex-col justify-center items-center '
+              className='contact-form flex flex-col justify-center items-center  backdrop-opacity-10 backdrop-invert bg-blue-800/30 mb-2  p-8'
               onSubmit={formValidation}
             >
               <div className='col-6 py-3 text-center '>
@@ -128,7 +128,7 @@ const Registration = () => {
                   type='text'
                   name='name'
                   placeholder='User Name'
-                  className='contact-form-name input-text-box text-[15px]h-[45px] tracking-normal w-[50%] md:h-[2rem] md:w-[70%]'
+                  className='contact-form-name input-text-box text-lg h-[35px] w-[300px] tracking-normal'
                   value={userName}
                   onChange={(event) => setUserName(event.target.value)}
                 />
@@ -139,7 +139,7 @@ const Registration = () => {
                   type='email'
                   name='email'
                   placeholder='Email address'
-                  className='contact-form-email input-text-box text-[15px]h-[45px] tracking-normal w-[50%] md:h-[2rem] md:w-[70%]'
+                  className='contact-form-email input-text-box text-lg h-[35px] w-[300px] tracking-normal'
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                 />
@@ -149,7 +149,7 @@ const Registration = () => {
                 <input
                   type='password'
                   name='password'
-                  className='contact-form-message input-text-box text-[15px]h-[45px] tracking-normal w-[50%] md:h-[2rem] md:w-[70%] '
+                  className='input-text-box text-lg h-[35px] w-[300px] tracking-normal '
                   placeholder='Password'
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
@@ -160,7 +160,7 @@ const Registration = () => {
                 <input
                   type='number'
                   name='mobile number'
-                  className='contact-form-message input-text-box text-[15px]h-[45px] tracking-normal w-[50%] md:h-[2rem] md:w-[70%]'
+                  className='contact-form-message input-text-box text-lg h-[35px] w-[300px] tracking-normal'
                   placeholder='Mobile Number'
                   value={number}
                   onChange={(event) => setNumber(event.target.value)}
@@ -173,7 +173,7 @@ const Registration = () => {
                   onChange={(e) => setCity(e.target.value)}
                   id='city'
                   placeholder='City'
-                  className='w-[50%] h-[2rem] md:h-[2rem] md:w-[70%]'
+                  className='input-text-box text-[15px] h-[35px] w-[300px] tracking-normal'
                 >
                   <option defaultChecked>City</option>
                   <option value='Chennai'>Chennai</option>
@@ -190,7 +190,7 @@ const Registration = () => {
                 </select>
               </div>
 
-              <div className='signFrom-profilePic ml-10 col-6 py-3 text-center '>
+              <div className='signFrom-profilePic  col-6 py-3 text-center '>
                 {/* <label htmlFor='image'>Profile Picture</label> */}
                 <input
                   type='file'
@@ -198,7 +198,7 @@ const Registration = () => {
                   accept='image/*'
                   id='image'
                   onChange={(event) => getImageUrl(event)}
-                  className=' input-text-box text-[15px]h-[45px] tracking-normal w-[50%] h-[2rem] md:h-[2rem] md:w-[70%]'
+                  className=' input-text-box text-[15px] h-[35px] w-[300px] tracking-normal bg-white'
                 />
               </div>
 
@@ -226,7 +226,12 @@ const Registration = () => {
                     color: '#298af2',
                   }}
                 >
-                  <NavLink to='/'>Click here to Login</NavLink>
+                  <NavLink
+                    to='/login'
+                    className=' text-base font-bold underline text-blue-800'
+                  >
+                    Click here to Login
+                  </NavLink>
                   <br />
                 </span>
               </div>

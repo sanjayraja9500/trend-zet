@@ -16,7 +16,7 @@ const Products = ({ products }) => {
           there's a proper choice for every occasion and personality.
         </p>
       </div>
-      <div className='max-w-screen-xl mx-auto py-10 grid grid-cols-4 gap-10'>
+      <div className='max-w-screen-xl mx-auto py-10 grid grid-cols-2 md:grid-cols-4 gap-10  p-8'>
         {products.map((item) => (
           <ProductsCard key={item._id} product={item} />
         ))}

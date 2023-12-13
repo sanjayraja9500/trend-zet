@@ -7,6 +7,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { resetCart } from '../redux/bazarSlice';
+import { FcOk } from 'react-icons/fc';
 
 const Cart = () => {
   const productData = useSelector((state) => state.bazar.productData);
@@ -29,7 +30,7 @@ const Cart = () => {
   const handleCheckout = () => {
     dispatch(resetCart());
 
-    toast.success('Your Cart order is successfully placed');
+    toast.success('Your Cart order is Placed successfully..! ');
 
     setTimeout(() => {
       navigate('/');
@@ -53,8 +54,8 @@ const Cart = () => {
       {productData.length > 0 ? (
         <div className='max-w-screen-xl mx-auto py-20 flex'>
           <CartItem />
-          <div className='w-1/3 bg-[#fafafa] py-6 px-4'>
-            <div className='flex flex-col gap-6 border-b-[1px] border-b-gray-400 pb-6'>
+          <div className='w-1/3 h-full bg-gray-100 py-6 px-4'>
+            <div className='flex flex-col gap-6 border-b-[1px] border-b-gray-700 pb-6'>
               <h2 className='text-2xl font-medium'> cart totals</h2>
               <p className='flex items-center gap-4 text-base font-semibold'>
                 Subtotal{''}
@@ -62,50 +63,39 @@ const Cart = () => {
               </p>
               <p className='flex items-center gap-4 text-base font-semibold'>
                 Shipping{''}
-                <span>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Similique, sunt.
-                </span>
+                <span>Deliver to shipping address</span>
               </p>
             </div>
             <p className='font-2xl font-semibold flex justify-between mt-6'>
               Total <span className='text-xl font-bold'>$ {totalAmt}</span>
             </p>
             <button
-              onClick={handleCheckout}
+              onClick={() => setShow(!show)}
               className='text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300'
             >
               Proceed to checkout
             </button>
             {show ? (
-              <div className=' p-1 ml-4 mt-3 bg-orange-100 border b-2 rounded h-1/4 w-full'>
-                <h6 className='text-center font-bold'> {userInfo.name}</h6>
+              <div className=' p-1  mt-3 bg-orange-100 border b-2 rounded h-1/4 w-full'>
                 <p>
-                  <h2 className='font-semibold ml-20'>
-                    Your Cart Order is Placed
+                  <h2 className='font-bold text-base text-left ml-10 mt-5'>
+                    Your Cart Order is ready to Place...!
                   </h2>
                 </p>
                 <p className='-mb-10'>
-                  <span className='font-semibold ml-20 '>
-                    Expect delivery in Two days
-                  </span>
+                  <h2 className='font-bold text-base ml-10 text-start '>
+                    Expect delivery in 2 days...to your address...!
+                  </h2>
+                  <button
+                    onClick={handleCheckout}
+                    className='text-base bg-black text-white ml-3 md:,l-10  w-[80%] py-3 mt-6 hover:bg-gray-800 duration-300 flex justify-center items-center'
+                  >
+                    Confirm to Place the Order
+                    <FcOk className='mt-1 ml-2' />
+                  </button>
                 </p>
               </div>
             ) : null}
-
-            {/* {payNow && (
-              <div className='w-full mt-6 flex item-center justify-center'>
-                <StripeCheckout
-                  stripeKey='pk_test_51NxSXXSIuppAGBTJ8iASiI7Vi2APn4Vc7voboZPkg4ukB46GkymZm85Rr3hytKU5mAKdY8Lm6pTCmyjF2VsOWqhd00UkNaodVA'
-                  name='Trend-zet Online Shopping'
-                  amount={totalAmt * 100}
-                  label='Pay to bazar'
-                  description={`Your Payment amount is $${totalAmt}`}
-                  token={payment}
-                  email={userInfo.email}
-                />
-              </div>
-            )} */}
           </div>
         </div>
       ) : (

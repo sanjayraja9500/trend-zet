@@ -21,9 +21,9 @@ const Login = () => {
       setTimeout(() => {
         navigate('/');
       }, 1000);
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 1500);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
 
       toast.success('Login Successfully');
     });
@@ -46,7 +46,7 @@ const Login = () => {
         toast.success('Login successfully');
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 2500);
       })
       .catch((err) => {
         console.log('Err', err.message);
@@ -54,7 +54,7 @@ const Login = () => {
   };
 
   return (
-    <div className='contact mb-4 mt-24 ' id='contact'>
+    <div className='contact mb-24 mt-24' id='contact'>
       <div className='title-container bg-gradient-to-r from-orange-200 to-transparent items-center justify-center '>
         <div className='flex  justify-center items-center '>
           <h3
@@ -62,21 +62,21 @@ const Login = () => {
               color: '#000',
               padding: '10px 50px',
             }}
-            className='rounded-md mt-3'
+            className='rounded-md mt-3 text-xl font-bold underline'
           >
             Sign In
           </h3>
         </div>
-        <div className='row h-100 justify-content-center align-items-center'>
-          <div className='col-10 col-md-8 col-g-6'>
+        <div className='flex w-[100%] h-100 justify-center align-items-center '>
+          <div className='mb-4 '>
             <form
-              className='contact-form flex flex-col justify-center items-center'
+              className='contact-form flex flex-col justify-center items-center backdrop-opacity-10 backdrop-invert bg-orange-300/20 rounded-md  p-8'
               onSubmit={onSubmit}
             >
               <div className='col-6 py-3'>
                 <input
                   type='email'
-                  className='form-control input-text-box text-[15px]h-[45px] tracking-normal'
+                  className='form-control input-text-box text-lg h-[35px] w-[300px] tracking-normal'
                   name='email'
                   placeholder='Enter a valid email address'
                   required
@@ -89,7 +89,7 @@ const Login = () => {
                 <input
                   type='password'
                   name='password'
-                  className='form-control input-text-box text-[15px]h-[45px] tracking-normal'
+                  className='input-text-box text-lg h-[35px] w-[300px] tracking-normal'
                   placeholder='Enter New Password'
                   required
                   value={password}
@@ -123,7 +123,12 @@ const Login = () => {
               <div className='already-acc'>
                 Not account yet ?{'   '}
                 <span className='already-acc-log'>
-                  <NavLink to='/registration'>Click here to Register</NavLink>
+                  <NavLink
+                    to='/registration'
+                    className='text-base font-bold text-blue-400 underline'
+                  >
+                    Click here to Register
+                  </NavLink>
                 </span>
               </div>
             </form>
@@ -138,13 +143,13 @@ const Login = () => {
           Show Crediential
         </button>
         {show ? (
-          <div className=' p-1 ml-4 mt-3 bg-orange-100 border b-2 rounded'>
+          <div className=' p-1 ml-4 mt-3 bg-orange-100 border b-2 rounded gap-4'>
             <h6 className='text-center font-bold'>User Credential</h6>
             <p>
               <span className='font-semibold'>Email:</span> john01@gmail.com
             </p>
-            <p className='-mt-4'>
-              <span className='font-semibold'>Password:</span>123456
+            <p className='mb-5'>
+              <span className='font-semibold'>Password:</span>john01
             </p>
           </div>
         ) : null}

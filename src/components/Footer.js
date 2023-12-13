@@ -31,7 +31,7 @@ const Footer = () => {
     <div className='bg-black text-[#949494] py-20 font-semi-bold'>
       <div
         className='max-w-screen-xl
-        mx-auto grid grid-cols-4'
+        mx-auto grid grid-cols-2 md:grid-cols-4 gap-5'
       >
         <div className='flex flex-col gap-7'>
           <Link to='/' className='w-32 text-3xl text-bold text-white underline'>
