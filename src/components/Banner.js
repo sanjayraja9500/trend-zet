@@ -53,10 +53,10 @@ const Banner = () => {
             Loading='priority'
           />
         </div>
-        <div className='absolute w-fit left-0 right-0 mx-auto flex gap-8 bottom-48 px-4'>
+        <div className='absolute w-fit left-0 right-0 mx-auto -mb-20 flex gap-8 bottom-48 px-4'>
           <div
             onClick={prevSlide}
-            className='w-14 h-12 border-[1px] border-gray-700 flex items-center justify-center hover:cursor-pointer hover:bg-white hover:text-black  duration-300'
+            className='w-14 h-12 border-[1px] border-gray-700 flex items-center justify-center hover:cursor-pointer hover:bg-white hover:text-black  duration-300 '
           >
             <HiArrowLeft />
           </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ImGithub } from 'react-icons/im';
 import {
   FaFacebookF,
@@ -9,8 +9,24 @@ import {
 } from 'react-icons/fa';
 import { MdLocationOn } from 'react-icons/md';
 import { BsPersonFill, BsPaypal } from 'react-icons/bs';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState('');
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
+  const handleSubmit = () => {
+    // window.location.reload();
+    toast.success('you Subscribe Successfully');
+    setQuery('');
+    setTimeout(() => {
+      navigate('/');
+    }, 1500);
+  };
   return (
     <div className='bg-black text-[#949494] py-20 font-semi-bold'>
       <div
@@ -18,9 +34,9 @@ const Footer = () => {
         mx-auto grid grid-cols-4'
       >
         <div className='flex flex-col gap-7'>
-          <h1 className='w-32 text-3xl text-bold text-white underline'>
+          <Link to='/' className='w-32 text-3xl text-bold text-white underline'>
             Trend-zet
-          </h1>
+          </Link>
           <p className='text-white text-sm tracking-wide'>React BD.com</p>
           <img
             className='w-56'
@@ -49,35 +65,38 @@ const Footer = () => {
 
         <div>
           <h2 className='text-2xl font-semibold text-white mb-4'>Profile</h2>
-          <div className='flex flex-col gap-2 text-base'>
-            <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
-              <span className='py-1'>
-                <BsPersonFill />
-              </span>{' '}
-              My Account
-            </p>
+          <Link to='/'>
+            {' '}
+            <div className='flex flex-col gap-2 text-base'>
+              <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
+                <span className='py-1'>
+                  <BsPersonFill />
+                </span>{' '}
+                My Account
+              </p>
 
-            <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
-              <span className='py-1'>
-                <BsPaypal />
-              </span>{' '}
-              Checkout
-            </p>
+              <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
+                <span className='py-1'>
+                  <BsPaypal />
+                </span>{' '}
+                Checkout
+              </p>
 
-            <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
-              <span className='py-1'>
-                <FaHome />
-              </span>{' '}
-              Order Tracking
-            </p>
+              <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
+                <span className='py-1'>
+                  <FaHome />
+                </span>{' '}
+                Order Tracking
+              </p>
 
-            <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
-              <span className='py-1'>
-                <MdLocationOn />
-              </span>{' '}
-              Help & Support
-            </p>
-          </div>
+              <p className='flex item-center gap-2 hover:text-white duration-300 cursor-pointer py-3'>
+                <span className='py-1'>
+                  <MdLocationOn />
+                </span>{' '}
+                Help & Support
+              </p>
+            </div>
+          </Link>
         </div>
 
         <div className='flex flex-col justify-center'>
@@ -85,8 +104,13 @@ const Footer = () => {
             className='bg-transparent border px-4 py-2 text-sm'
             placeholder='e-mail'
             type='text'
+            value={query}
+            onChange={handleChange}
           />
-          <button className='text-sm border text-white border-t-0 hover:bg-gray-900 active:bg-white active:text-black'>
+          <button
+            className='text-sm border text-white border-t-0 hover:bg-gray-900 active:bg-white active:text-black'
+            onClick={handleSubmit}
+          >
             Subscribe
           </button>
         </div>

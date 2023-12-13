@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CartItem from '../components/CartItem';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import { HiOutlineArrowLeft } from 'react-icons/hi';
+import { resetCart } from '../redux/bazarSlice';
 
 const Cart = () => {
   const productData = useSelector((state) => state.bazar.productData);
@@ -13,6 +14,8 @@ const Cart = () => {
   const userInfo = useSelector((state) => state.bazar.userInfo);
   const [totalAmt, setTotalAmt] = useState('');
   const [payNow, setPayNow] = useState(false);
+  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let price = 0;
@@ -24,13 +27,12 @@ const Cart = () => {
   }, [productData]);
 
   const handleCheckout = () => {
-    if (userInfo) {
-      setPayNow(true);
-    } else {
-      toast.error('Please Sign in to Checkout');
-    }
+    dispatch(resetCart());
+
+    toast.success('Your Cart order is successfully placed');
+
     setTimeout(() => {
-      navigate('/login');
+      navigate('/');
     }, 5000);
   };
 
@@ -75,7 +77,23 @@ const Cart = () => {
             >
               Proceed to checkout
             </button>
-            {payNow && (
+            {show ? (
+              <div className=' p-1 ml-4 mt-3 bg-orange-100 border b-2 rounded h-1/4 w-full'>
+                <h6 className='text-center font-bold'> {userInfo.name}</h6>
+                <p>
+                  <h2 className='font-semibold ml-20'>
+                    Your Cart Order is Placed
+                  </h2>
+                </p>
+                <p className='-mb-10'>
+                  <span className='font-semibold ml-20 '>
+                    Expect delivery in Two days
+                  </span>
+                </p>
+              </div>
+            ) : null}
+
+            {/* {payNow && (
               <div className='w-full mt-6 flex item-center justify-center'>
                 <StripeCheckout
                   stripeKey='pk_test_51NxSXXSIuppAGBTJ8iASiI7Vi2APn4Vc7voboZPkg4ukB46GkymZm85Rr3hytKU5mAKdY8Lm6pTCmyjF2VsOWqhd00UkNaodVA'
@@ -87,7 +105,7 @@ const Cart = () => {
                   email={userInfo.email}
                 />
               </div>
-            )}
+            )} */}
           </div>
         </div>
       ) : (

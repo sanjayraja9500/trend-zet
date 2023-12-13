@@ -8,15 +8,16 @@ import { store, persistor } from './redux/store';
 import { app } from './firebase.config';
 
 import { PersistGate } from 'redux-persist/integration/react';
-// import reportWebVitals from './reportWebVitals';
+import { UserProvider } from './context/userContext';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <Provider store={store} app={app}>
-    <PersistGate loading={'loading'} persistor={persistor}>
-      <App />
-    </PersistGate>
-  </Provider>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <UserProvider>
+    <Provider store={store} app={app}>
+      <PersistGate loading={'loading'} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  </UserProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,11 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { LuLogOut } from 'react-icons/lu';
+import { removeUser } from '../redux/bazarSlice';
+import { signOut } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
+import { auth } from '../firebase.config';
 
 const Header = () => {
   const productData = useSelector((state) => state.bazar.productData);
   const userInfo = useSelector((state) => state.bazar.userInfo);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   console.log(userInfo);
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        dispatch(removeUser());
+      })
+      .catch((error) => {});
+    navigate('/');
+  };
+
   return (
     <div className='w-full h-20 bg-white border-b-[1px] border-b-gray-800 sticky top-0 z-50'>
       <div className='max-w-screen-xl h-full mx-auto flex items-center justify-between'>
@@ -18,18 +34,28 @@ const Header = () => {
         </Link>
         <div className='flex items-center gap-8 p-8'>
           <ul className='flex items-center gap-8 p-8'>
-            <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
-              Home
-            </li>
-            <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
-              Pages
-            </li>
-            <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
-              Shop
-            </li>
-            <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
-              Element
-            </li>
+            <Link to='/'>
+              <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                Home
+              </li>
+            </Link>
+            <Link to='/banner'>
+              {' '}
+              <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                Pages
+              </li>
+            </Link>
+            <Link to='/cart'>
+              {' '}
+              <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                Shop
+              </li>
+            </Link>
+            <Link to='/login'>
+              <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                Element
+              </li>
+            </Link>
             <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 cursor-pointer duration-300'>
               Blog
             </li>
@@ -42,7 +68,7 @@ const Header = () => {
               </span>
             </div>
           </Link>
-          <Link to='login'>
+          <Link to='/profile'>
             <img
               className='w-8 h-8 rounded-full '
               src={
@@ -55,8 +81,14 @@ const Header = () => {
           </Link>
           {userInfo && (
             <p className='text-base font-2xl font-semibold underline underline-offset-2'>
-              {userInfo.name}
+              {userInfo.email}
             </p>
+          )}
+
+          {userInfo && (
+            <div onClick={handleLogout} className='headerHover '>
+              <LuLogOut className='w-6 h-6' />
+            </div>
           )}
         </div>
       </div>
