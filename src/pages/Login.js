@@ -44,9 +44,9 @@ const Login = () => {
           navigate('/');
         }, 1000);
         toast.success('Login successfully');
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 2000);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       })
       .catch((err) => {
         console.log('Err', err.message);
