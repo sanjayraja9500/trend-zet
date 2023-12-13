@@ -47,10 +47,19 @@ const App = () => {
       element: <Layout />,
       children: [
         {
+          path: '/login',
+          element: <Login />,
+        },
+        {
+          path: '/registration',
+          element: <Registration />,
+        },
+        {
           path: '/',
           element: <Home />,
           loader: productsData,
         },
+
         {
           path: '/product/:id',
           element: <Product />,
@@ -60,17 +69,10 @@ const App = () => {
           path: '/cart',
           element: user && user.uid ? <Cart /> : <Navigate to='/login' />,
         },
-        {
-          path: '/login',
-          element: <Login />,
-        },
-        {
-          path: '/registration',
-          element: <Registration />,
-        },
+
         {
           path: '/profile',
-          element: <Profile />,
+          element: user && user.uid ? <Profile /> : <Navigate to='/login' />,
         },
         {
           path: '/banner',

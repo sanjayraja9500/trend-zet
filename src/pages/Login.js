@@ -21,9 +21,9 @@ const Login = () => {
       setTimeout(() => {
         navigate('/');
       }, 1000);
-      setTimeout(() => {
-        window.location.reload();
-      }, 1500);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1500);
 
       toast.success('Login Successfully');
     });

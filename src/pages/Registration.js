@@ -7,6 +7,7 @@ import { setProfileData } from '../utils/firebase.Function';
 import { storage, auth } from '../firebase.config';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { UserConsumer } from '../context/userContext';
+
 const Registration = () => {
   const { fetchProfileData } = UserConsumer();
   const navigate = useNavigate();
@@ -14,19 +15,14 @@ const Registration = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [number, setNumber] = useState();
-  const [gender, setGender] = useState();
+  const [city, setCity] = useState();
   const [imageURL, setImageURL] = useState();
 
   const onSubmit = async () => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setTimeout(() => {
-          navigate('/');
-        }, 1000);
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+        navigate('/');
       })
       .catch((err) => {
         if (err.code === 'auth/email-already-in-use') {
@@ -35,6 +31,9 @@ const Registration = () => {
           toast.warning('Email already exist');
         }
       });
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   };
 
   const getImageUrl = (event) => {
@@ -75,7 +74,7 @@ const Registration = () => {
 
   const formValidation = (e) => {
     e.preventDefault();
-    if (userName && email && password && number && gender && imageURL) {
+    if (userName && email && password && number && city && imageURL) {
       if (number.length === 10) {
         const data = {
           id: Date.now(),
@@ -83,7 +82,7 @@ const Registration = () => {
           email,
           password,
           number,
-          gender,
+          city,
           image: imageURL,
         };
         setProfileData(data);
@@ -98,7 +97,7 @@ const Registration = () => {
     setUserName('');
     setEmail('');
     setPassword('');
-    setGender('');
+    setCity('');
     setNumber('');
     setImageURL('');
   };
@@ -129,7 +128,7 @@ const Registration = () => {
                   type='text'
                   name='name'
                   placeholder='User Name'
-                  className='contact-form-name input-text-box text-[15px]h-[45px] tracking-normal w-[50%] h-[2rem]'
+                  className='contact-form-name input-text-box text-[15px]h-[45px] tracking-normal w-[50%] md:h-[2rem] md:w-[70%]'
                   value={userName}
                   onChange={(event) => setUserName(event.target.value)}
                 />
@@ -140,7 +139,7 @@ const Registration = () => {
                   type='email'
                   name='email'
                   placeholder='Email address'
-                  className='contact-form-email input-text-box text-[15px]h-[45px] tracking-normal w-[50%] h-[2rem]'
+                  className='contact-form-email input-text-box text-[15px]h-[45px] tracking-normal w-[50%] md:h-[2rem] md:w-[70%]'
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                 />
@@ -150,7 +149,7 @@ const Registration = () => {
                 <input
                   type='password'
                   name='password'
-                  className='contact-form-message input-text-box text-[15px]h-[45px] tracking-normal w-[50%] h-[2rem]'
+                  className='contact-form-message input-text-box text-[15px]h-[45px] tracking-normal w-[50%] md:h-[2rem] md:w-[70%] '
                   placeholder='Password'
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
@@ -161,7 +160,7 @@ const Registration = () => {
                 <input
                   type='number'
                   name='mobile number'
-                  className='contact-form-message input-text-box text-[15px]h-[45px] tracking-normal w-[50%] h-[2rem]'
+                  className='contact-form-message input-text-box text-[15px]h-[45px] tracking-normal w-[50%] md:h-[2rem] md:w-[70%]'
                   placeholder='Mobile Number'
                   value={number}
                   onChange={(event) => setNumber(event.target.value)}
@@ -170,15 +169,24 @@ const Registration = () => {
 
               <div className='signFrom-gende col-6 py-3 text-center'>
                 <select
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                  id='gender'
-                  placeholder='gender'
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  id='city'
+                  placeholder='City'
+                  className='w-[50%] h-[2rem] md:h-[2rem] md:w-[70%]'
                 >
-                  <option defaultChecked>Gender</option>
-                  <option value='Male'>Male</option>
-                  <option value='Women'>Women</option>
-                  <option value='Other'>Other</option>
+                  <option defaultChecked>City</option>
+                  <option value='Chennai'>Chennai</option>
+                  <option value='Coimbatore'>Coimbatore</option>
+                  <option value='Tirupur'>Tirupur</option>
+                  <option value='Erode'>Erode</option>
+                  <option value='Salem'>Salem</option>
+                  <option value='Vellore'>Vellore</option>
+                  <option value='Madurai'>Madurai</option>
+                  <option value='Tirchy'>Tirchy</option>
+                  <option value='Dindigul'>Dindigul</option>
+                  <option value='Villupuram'>Villupuram</option>
+                  <option value='Others'>Others</option>
                 </select>
               </div>
 
@@ -190,15 +198,9 @@ const Registration = () => {
                   accept='image/*'
                   id='image'
                   onChange={(event) => getImageUrl(event)}
-                  className=' input-text-box text-[15px]h-[45px] tracking-normal w-[50%] h-[2rem]'
+                  className=' input-text-box text-[15px]h-[45px] tracking-normal w-[50%] h-[2rem] md:h-[2rem] md:w-[70%]'
                 />
               </div>
-
-              {imageURL && (
-                <div className='image-url'>
-                  <img src={imageURL} alt='imgUrl' />
-                </div>
-              )}
 
               <div className='btn-container col-12 py-3 text-center'>
                 <button
