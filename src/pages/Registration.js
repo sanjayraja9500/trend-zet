@@ -103,7 +103,7 @@ const Registration = () => {
   };
 
   return (
-    <div className='contact  mb-14 mt-14 ' id='contact'>
+    <div className='contact  mb-14  ' id='contact'>
       <div className='title-container bg-gradient-to-r from-blue-400 to-transparent items-center justify-center'>
         <div className='flex  justify-center items-center '>
           <h3
@@ -111,7 +111,7 @@ const Registration = () => {
               color: '#000',
               padding: '10px 50px',
             }}
-            className='rounded-md mt-3 text-xl font-bold underline  '
+            className='rounded-md mt-2 text-xl font-bold underline uppercase '
           >
             Sign Up
           </h3>
@@ -210,7 +210,7 @@ const Registration = () => {
                     color: '#ffff',
                     padding: '10px 50px',
                   }}
-                  className='btn connect'
+                  className='btn connect uppercase'
                 >
                   Register
                 </button>

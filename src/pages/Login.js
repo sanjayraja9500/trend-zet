@@ -62,7 +62,7 @@ const Login = () => {
               color: '#000',
               padding: '10px 50px',
             }}
-            className='rounded-md mt-3 text-xl font-bold underline'
+            className='rounded-md mt-3 text-xl font-bold underline uppercase'
           >
             Sign In
           </h3>
@@ -105,7 +105,7 @@ const Login = () => {
                     color: '#ffff',
                     padding: '10px 50px',
                   }}
-                  className='btn connect'
+                  className='btn connect uppercase'
                 >
                   LogIn
                 </button>

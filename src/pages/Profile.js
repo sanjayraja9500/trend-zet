@@ -63,15 +63,6 @@ const Profile = () => {
     }, 1000);
   };
 
-  // const clearFormInput = () => {
-  //   setId('');
-  //   setUserName('');
-  //   setEmail('');
-  //   setCity('');
-  //   setNumber('');
-  //   setImageURL('');
-  // };
-
   return (
     <section className=' h-screen w-full flex flex-col justify-center items-center  p-8'>
       <div className=' bg-slate-800 border-2 p-8'>
