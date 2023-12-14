@@ -11,6 +11,7 @@ import { UserConsumer } from '../context/userContext';
 import { useState } from 'react';
 import { CgLogIn } from 'react-icons/cg';
 import { TbLogout2 } from 'react-icons/tb';
+import { resetCart } from '../redux/bazarSlice';
 
 const Header = () => {
   const productData = useSelector((state) => state.bazar.productData);
@@ -47,6 +48,7 @@ const Header = () => {
     setProfileData(null);
     setAccessToken(null);
     clearFormInput();
+    dispatch(resetCart());
     setTimeout(() => {
       navigate('/login');
     }, 1000);
