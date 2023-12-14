@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
-
 import { removeUser } from '../redux/bazarSlice';
 import { signOut } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { auth } from '../firebase.config';
 import { RiAccountPinCircleLine } from 'react-icons/ri';
 import { UserConsumer } from '../context/userContext';
-import { useState } from 'react';
+
 import { CgLogIn } from 'react-icons/cg';
 import { TbLogout2 } from 'react-icons/tb';
 import { resetCart } from '../redux/bazarSlice';
@@ -97,7 +96,7 @@ const Header = () => {
         )}
 
         <div className='flex items-center gap-8 p-8'>
-          <ul className='flex items-center gap-10 md:gap-16 p-10'>
+          <ul className='flex items-center gap-14 md:gap-16 p-8'>
             {accessToken ? (
               <Link to='/'>
                 <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
@@ -112,12 +111,6 @@ const Header = () => {
               </Link>
             )}
 
-            <Link to='/banner'>
-              {' '}
-              <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
-                Pages
-              </li>
-            </Link>
             <Link to='/cart'>
               {' '}
               <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
@@ -131,14 +124,13 @@ const Header = () => {
             <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
               <Link to='/profile'>
                 <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
-                  {' '}
                   <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
                 </span>
                 <h2 className='w-6 relative'> Profile</h2>
               </Link>
             </li>
 
-            <li className='text-base text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 cursor-pointer duration-300 flex ml-2 '>
+            <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300  '>
               <Link to='/login'>
                 <div>
                   {accessToken ? (

@@ -44,10 +44,22 @@ const ProductsCard = ({ product }) => {
             </h2>
           </div>
           <div className='flex gap-2 relative overflow-hidden w-28 text-sm'>
-            <div className=' flex gap-2 transform group-hover:translate-x-24 tansition-transform duration-500'>
-              <p className='line-through text-gray-500'>${product.oldPrice}</p>
-              <p className='font-semibold'>${product.price}</p>
-            </div>
+            {accessToken ? (
+              <div className=' flex gap-2 transform group-hover:translate-x-24 transition-transform duration-500'>
+                <p className='line-through text-gray-500'>
+                  ${product.oldPrice}
+                </p>
+                <p className='font-semibold'>${product.price}</p>
+              </div>
+            ) : (
+              <div className='  gap-1  transform group-hover:translate-x-24 mt-5 transition-transform duration-500'>
+                <p> Login to purchase</p>
+                <p className='line-through text-gray-500'>
+                  ${product.oldPrice}
+                </p>
+                <p className='font-semibold'>${product.price}</p>
+              </div>
+            )}
 
             {accessToken ? (
               <p
@@ -72,8 +84,8 @@ const ProductsCard = ({ product }) => {
               </p>
             ) : (
               <Link to='/login'>
-                <p className='absolute z-20 mb-10 w-[100px] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 right-0 '>
-                  Login
+                <p className='absolute z-20 mb-10 w-[100px] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 transform translate-x-28 group-hover:translate-x-0 transition-transform cursor-pointer duration-500  '>
+                  ''
                 </p>
               </Link>
             )}

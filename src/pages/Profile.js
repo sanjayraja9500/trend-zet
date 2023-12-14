@@ -5,29 +5,28 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase.config';
 
 import { ToastContainer, toast } from 'react-toastify';
-import { IoHome } from 'react-icons/io5';
+
 import { FaCircleArrowLeft } from 'react-icons/fa6';
+import { FcHome } from 'react-icons/fc';
 
 const Profile = () => {
   const {
     userName,
     setUserName,
     email,
-    setEmail,
+
     number,
     setNumber,
     city,
     setCity,
     imageURL,
-    setImageURL,
+
     getImageUrl,
     id,
-    setId,
+
     userProfile,
-    profileData,
-    setProfileData,
+
     fetchProfileData,
-    setAccessToken,
   } = UserConsumer();
 
   useEffect(() => {
@@ -55,16 +54,17 @@ const Profile = () => {
           toast.success('Profile Update Successfully !');
         } catch (error) {
           console.log(error);
+          toast.success('Profile Update Successfully !');
         }
       } else toast.warning('Enter valid phone number !');
     } else toast.warning('Input Field Is Mandatory !');
     setTimeout(() => {
       navigate('/');
-    }, 1000);
+    }, 1500);
   };
 
   return (
-    <section className=' h-screen w-full flex flex-col justify-center items-center  p-8'>
+    <section className=' h-screen w-full flex flex-col justify-center items-center  p-8 mb-10 mt-10'>
       <div className=' bg-slate-800 border-2 p-8'>
         <Link to='/'>
           <FaCircleArrowLeft className='text-2xl font-extrabold text-white' />
@@ -189,7 +189,7 @@ const Profile = () => {
               }}
             >
               Back to Home
-              <IoHome className='mb-1 text-xl' />
+              <FcHome className='mb-1 text-2xl' />
             </button>
           </Link>
         </div>

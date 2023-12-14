@@ -23,7 +23,7 @@ const Login = () => {
       }, 1000);
       setTimeout(() => {
         window.location.reload();
-      }, 1500);
+      }, 3000);
 
       toast.success('Login Successfully');
     });
@@ -104,15 +104,16 @@ const Login = () => {
                     background: '#c43421',
                     color: '#ffff',
                     padding: '10px 50px',
+                    hover: '#c43421',
                   }}
-                  className='btn connect uppercase'
+                  className='btn connect uppercase transition ease-in-out delay-150 hover:-translate-y-1 hover:scale--50 duration-300 ...'
                 >
-                  LogIn
+                  Login
                 </button>
                 <div className=' flex  flex-col justify-center items-center rounded mt-3'>
                   <button
                     onClick={handleLogin}
-                    className='bg-gradient-to-r from-green-300 to-blue-400 hover:from-pink-300 hover:to-yellow-200  text-black py-2.5 px-12 font-bold  '
+                    className='bg-gradient-to-r from-green-300 to-blue-400 hover:from-pink-300 hover:to-yellow-200  text-black py-2.5 px-12 font-bold transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1   duration-300  '
                   >
                     <FcGoogle className='ml-16 text-2xl' />
                     Sign-In with Google
