@@ -54,7 +54,7 @@ const Login = () => {
   };
 
   return (
-    <div className='contact mb-24 mt-24' id='contact'>
+    <div className='contact mb-24 mt-8' id='contact'>
       <div className='title-container bg-gradient-to-r from-orange-200 to-transparent items-center justify-center '>
         <div className='flex  justify-center items-center '>
           <h3
