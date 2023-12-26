@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase.config';
+import { setProfileData } from '../utils/firebase.Function';
 
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -14,18 +15,15 @@ const Profile = () => {
     userName,
     setUserName,
     email,
-
+    isEditing,
     number,
     setNumber,
     city,
     setCity,
     imageURL,
-
     getImageUrl,
     id,
-
     userProfile,
-
     fetchProfileData,
   } = UserConsumer();
 
@@ -36,31 +34,44 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  const updateFunc = async (e) => {
-    e.preventDefault();
+  const addProfileData = async () => {
     if (userName && email && number && city && imageURL) {
       if (number.length === 10) {
-        try {
-          const itemToEditRef = doc(db, 'usersProfileData', id);
-          await updateDoc(itemToEditRef, {
-            id,
+        if (!isEditing) {
+          const data = {
             userName,
             email,
             number,
-            city,
             image: imageURL,
-          });
+            city,
+          };
+          setProfileData(data);
+          navigate('/');
           fetchProfileData();
-          toast.success('Profile Update Successfully !');
-        } catch (error) {
-          console.log(error);
-          toast.success('Profile Update Successfully !');
+          toast.success('Successfully Add New Profile');
+        } else {
+          try {
+            const itemToEditRef = doc(db, 'usersProfileData', id);
+            await updateDoc(itemToEditRef, {
+              userName,
+              email,
+              number,
+              image: imageURL,
+              city,
+            });
+          } catch (error) {
+            console.log(error);
+          }
+          navigate('/');
+          fetchProfileData();
+          toast.success('Profile Update Successfully');
         }
-      } else toast.warning('Enter valid phone number !');
-    } else toast.warning('Input Field Is Mandatory !');
-    setTimeout(() => {
-      navigate('/');
-    }, 1500);
+      } else {
+        toast.warning('Enter a valid number!');
+      }
+    } else {
+      toast.error('Input Field Is Mandatory!');
+    }
   };
 
   return (
@@ -173,7 +184,7 @@ const Profile = () => {
                 padding: '10px 50px',
               }}
               className='rounded-md text-xl'
-              onClick={updateFunc}
+              onClick={addProfileData}
             >
               Update Profile
             </button>

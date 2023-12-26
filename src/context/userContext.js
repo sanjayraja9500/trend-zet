@@ -19,6 +19,8 @@ const UserProvider = ({ children }) => {
   const [number, setNumber] = useState();
   const [city, setCity] = useState();
   const [imageURL, setImageURL] = useState();
+  const [isEditing, setIsEditing] = useState(false);
+  const [profile, setProfile] = useState(null);
 
   const getImageUrl = (event) => {
     const imageFile = event.target.files[0];
@@ -65,12 +67,26 @@ const UserProvider = ({ children }) => {
   const userProfile = () => {
     const filterUser = profileData.find((item) => item.email === email);
     if (filterUser) {
-      setId(filterUser.id);
-      setEmail(filterUser.email);
-      setUserName(filterUser.userName);
-      setCity(filterUser.city);
-      setImageURL(filterUser.image);
-      setNumber(filterUser.number);
+      if (filterUser === 'undefined') {
+        setIsEditing(false);
+        setId('nill');
+        setEmail('nill');
+        setUserName('nill');
+
+        setCity('nill');
+        setImageURL('nill');
+        setNumber('nill');
+      } else {
+        setIsEditing(true);
+        setProfile(filterUser.id);
+        setId(filterUser.id);
+        setEmail(filterUser.email);
+        setUserName(filterUser.userName);
+
+        setCity(filterUser.city);
+        setImageURL(filterUser.image);
+        setNumber(filterUser.number);
+      }
     }
   };
 
@@ -109,6 +125,8 @@ const UserProvider = ({ children }) => {
         id,
         setId,
         userProfile,
+        isEditing,
+        profile,
         profileData,
         fetchProfileData,
         accessToken,
