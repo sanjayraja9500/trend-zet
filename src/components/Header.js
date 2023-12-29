@@ -91,7 +91,8 @@ const Header = () => {
             className=' text-black text-lg font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 hidden md:block '
           >
             <p className='flex text-xl font-bold '>
-              <SiWelcometothejungle className='mt-1' /> ELCOME ...!
+              <SiWelcometothejungle className='mt-1' />
+              ELCOME ...!
             </p>
           </Link>
         ) : (
