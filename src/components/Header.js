@@ -11,6 +11,7 @@ import { UserConsumer } from '../context/userContext';
 import { CgLogIn } from 'react-icons/cg';
 import { TbLogout2 } from 'react-icons/tb';
 import { resetCart } from '../redux/bazarSlice';
+import { SiWelcometothejungle } from 'react-icons/si';
 
 const Header = () => {
   const productData = useSelector((state) => state.bazar.productData);
@@ -89,7 +90,9 @@ const Header = () => {
             t0='/'
             className=' text-black text-lg font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 hidden md:block '
           >
-            WELCOME ...!
+            <p className='flex text-xl font-bold '>
+              <SiWelcometothejungle className='mt-1' /> ELCOME ...!
+            </p>
           </Link>
         ) : (
           ''
