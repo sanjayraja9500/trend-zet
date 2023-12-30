@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
-import { removeUser } from '../redux/bazarSlice';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { signOut } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { auth } from '../firebase.config';
@@ -22,23 +22,13 @@ const Header = () => {
   console.log(userInfo);
 
   const {
-    userName,
     setUserName,
-    email,
     setEmail,
-    number,
     setNumber,
-    city,
     setCity,
-    imageURL,
     setImageURL,
-    getImageUrl,
-    id,
     setId,
-    userProfile,
-    profileData,
     setProfileData,
-    fetchProfileData,
     accessToken,
     setAccessToken,
   } = UserConsumer();
@@ -134,51 +124,22 @@ const Header = () => {
                 </li>
               </Link>
             )}
-            {/* 
-            <Link to='/cart'>
-              <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
-                <h2 className='w-6 relative '>Cart</h2>
-                <span className='absolute w-6 top-2 left-150 text-2xl -mt-2 ml-2 flex item-center justify-center font-semibold'>
-                  {productData.length}
-                </span>
-              </li>
-            </Link> */}
 
-            {/* <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+            <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
               <Link to='/profile'>
                 <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
                   <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
                 </span>
                 <h2 className='w-6 relative'> Profile</h2>
               </Link>
-            </li> */}
-
-            {accessToken ? (
-              <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
-                <Link to='/profile'>
-                  <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
-                    <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
-                  </span>
-                  <h2 className='w-6 relative'> Profile</h2>
-                </Link>
-              </li>
-            ) : (
-              <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
-                <Link to='/login'>
-                  <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
-                    <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
-                  </span>
-                  <h2 className='w-6 relative'> Profile</h2>
-                </Link>
-              </li>
-            )}
+            </li>
 
             <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300  '>
               <Link to='/login'>
                 <div>
                   {accessToken ? (
                     <h2
-                      className='w-6 text-xl md:text-xl relative underline flex flex-row mr-2     '
+                      className='w-6 text-xl md:text-xl relative underline flex flex-row mr-2 '
                       onClick={logOut}
                     >
                       Logout{' '}
@@ -207,3 +168,47 @@ const Header = () => {
 };
 
 export default Header;
+{
+  /* 
+            <Link to='/cart'>
+              <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                <h2 className='w-6 relative '>Cart</h2>
+                <span className='absolute w-6 top-2 left-150 text-2xl -mt-2 ml-2 flex item-center justify-center font-semibold'>
+                  {productData.length}
+                </span>
+              </li>
+            </Link> */
+}
+
+{
+  /* <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+              <Link to='/profile'>
+                <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
+                  <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
+                </span>
+                <h2 className='w-6 relative'> Profile</h2>
+              </Link>
+            </li> */
+}
+
+{
+  /* {accessToken ? (
+              <Link to='/profile'>
+                <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                  <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
+                    <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
+                  </span>
+                  <h2 className='w-6 relative'> Profile</h2>
+                </li>
+              </Link>
+            ) : (
+              <Link to='/login'>
+                <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                  <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
+                    <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
+                  </span>
+                  <h2 className='w-6 relative'> Profile</h2>
+                </li>
+              </Link>
+            )} */
+}

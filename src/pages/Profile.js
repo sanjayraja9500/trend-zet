@@ -4,9 +4,7 @@ import { useEffect } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase.config';
 import { setProfileData } from '../utils/firebase.Function';
-
 import { ToastContainer, toast } from 'react-toastify';
-
 import { FaCircleArrowLeft } from 'react-icons/fa6';
 import { FcHome } from 'react-icons/fc';
 

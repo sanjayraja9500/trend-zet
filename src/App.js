@@ -7,6 +7,7 @@ import {
   Outlet,
   RouterProvider,
   ScrollRestoration,
+  Navigate,
 } from 'react-router-dom';
 import Cart from './pages/Cart';
 import { productsData } from './api/Api';
@@ -82,7 +83,7 @@ const App = () => {
 
         {
           path: '/profile',
-          element: <Profile />,
+          element: user && user.uid ? <Profile /> : <Navigate to='/' />,
         },
       ],
     },
