@@ -115,24 +115,63 @@ const Header = () => {
               </Link>
             )}
 
+            {accessToken ? (
+              <Link to='/cart'>
+                <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                  <h2 className='w-6 relative '>Cart</h2>
+                  <span className='absolute w-6 top-2 left-150 text-2xl -mt-2 ml-2 flex item-center justify-center font-semibold'>
+                    {productData.length}
+                  </span>
+                </li>
+              </Link>
+            ) : (
+              <Link to='/login'>
+                <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                  <h2 className='w-6 relative '>Cart</h2>
+                  <span className='absolute w-6 top-2 left-150 text-2xl -mt-2 ml-2 flex item-center justify-center font-semibold'>
+                    {productData.length}
+                  </span>
+                </li>
+              </Link>
+            )}
+            {/* 
             <Link to='/cart'>
-              {' '}
               <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
                 <h2 className='w-6 relative '>Cart</h2>
                 <span className='absolute w-6 top-2 left-150 text-2xl -mt-2 ml-2 flex item-center justify-center font-semibold'>
                   {productData.length}
                 </span>
               </li>
-            </Link>
+            </Link> */}
 
-            <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+            {/* <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
               <Link to='/profile'>
                 <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
                   <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
                 </span>
                 <h2 className='w-6 relative'> Profile</h2>
               </Link>
-            </li>
+            </li> */}
+
+            {accessToken ? (
+              <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                <Link to='/profile'>
+                  <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
+                    <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
+                  </span>
+                  <h2 className='w-6 relative'> Profile</h2>
+                </Link>
+              </li>
+            ) : (
+              <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+                <Link to='/login'>
+                  <span className='absolute w-6 top-2 left-150  ml-3 text-xl flex item-center justify-center font-semibold'>
+                    <RiAccountPinCircleLine className='text-black hover:text-orange-700 text-2xl ' />
+                  </span>
+                  <h2 className='w-6 relative'> Profile</h2>
+                </Link>
+              </li>
+            )}
 
             <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300  '>
               <Link to='/login'>
@@ -168,3 +207,25 @@ const Header = () => {
 };
 
 export default Header;
+
+//  {
+//    accessToken ? (
+//      <Link to='/cart'>
+//        <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+//          <h2 className='w-6 relative '>Cart</h2>
+//          <span className='absolute w-6 top-2 left-150 text-2xl -mt-2 ml-2 flex item-center justify-center font-semibold'>
+//            {productData.length}
+//          </span>
+//        </li>
+//      </Link>
+//    ) : (
+//      <Link to='/login'>
+//        <li className='text-xl text-black font-bold hover:text-orange-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>
+//          <h2 className='w-6 relative '>Cart</h2>
+//          <span className='absolute w-6 top-2 left-150 text-2xl -mt-2 ml-2 flex item-center justify-center font-semibold'>
+//            {productData.length}
+//          </span>
+//        </li>
+//      </Link>
+//    );
+//  }
