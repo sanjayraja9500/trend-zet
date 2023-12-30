@@ -7,15 +7,13 @@ import {
   Outlet,
   RouterProvider,
   ScrollRestoration,
-  Navigate,
 } from 'react-router-dom';
 import Cart from './pages/Cart';
 import { productsData } from './api/Api';
 import Product from './components/product';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
-import Banner from './components/Banner';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { auth } from './firebase.config';
 import Profile from './pages/Profile';
 const Layout = () => {
@@ -79,16 +77,12 @@ const App = () => {
 
         {
           path: '/cart',
-          element: user && user.uid ? <Cart /> : <Navigate to='/login' />,
+          element: <Cart />,
         },
 
         {
           path: '/profile',
-          element: user && user.uid ? <Profile /> : <Navigate to='/login' />,
-        },
-        {
-          path: '/banner',
-          element: user && user.uid ? <Banner /> : <Navigate to='/login' />,
+          element: <Profile />,
         },
       ],
     },
